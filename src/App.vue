@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-
+<TweetCollection/>
   </div>
 </template>
 
 <script>
-
+import TweetCollection from './components/TweetCollection.vue'
 
 export default {
   name: 'App',
   components: {
-    
+    TweetCollection
   }
 }
 </script>
