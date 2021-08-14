@@ -1,12 +1,14 @@
 <template>
     <main>
-    <button v-on:click="toggleStyle">Click for Alternate View</button>
-    <TweetInfo v-bind:class="{ grid : isGrid, list : isList}" v-for="info in tweet" 
-    v-bind:key="info.id" 
-    :user="info.userVar"
-    :post="info.postVar"
-    :datePosted="info.datePosted"
-    ></TweetInfo>
+        <button v-on:click="toggleStyle">Click for Alternate View</button>
+        <div v-bind:class="{gridContainer: isContainer }">
+            <TweetInfo v-for="info in tweet" 
+            v-bind:key="info.id" 
+            :user="info.userVar"
+            :post="info.postVar"
+            :datePosted="info.datePosted"
+            ></TweetInfo>
+        </div>
     </main>
 </template>
 
@@ -19,8 +21,7 @@ import TweetInfo from './TweetInfo.vue'
         },
                 data : function (){
             return {
-                        isList : true,
-                        isGrid : false,
+                        isContainer : false,
                 tweet : [
                     {
                         userVar : "@kristinb21",
@@ -40,6 +41,12 @@ import TweetInfo from './TweetInfo.vue'
                         datePosted : "11-08-23",
                         id : 3
                     },
+                    {
+                        userVar : "@kristinb24",
+                        postVar : "This is my fourth tweet!",
+                        datePosted : "11-08-24",
+                        id : 4
+                    }
 
                 ]
                 
@@ -48,26 +55,19 @@ import TweetInfo from './TweetInfo.vue'
         methods : {
             toggleStyle : function(){
                 console.log("You clicked");
-                        this.isList = false
-                        this.isGrid = true
+                if (this.isContainer == true){
+                    this.isContainer = false
+                }else if(this.isContainer == false){
+                    this.isContainer = true
+                }
             }
             }
     }   
 </script>
 
 <style scoped>
-.grid{
+.gridContainer{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    border: 2px rgb(226, 43, 171) solid; 
-    height: 100px;
-    list-style: none;
-    align-content: center;
-
-}
-.list{
-    border: 2px blueviolet solid; 
-    margin-bottom: 5%;
-    width: 600px;
+    grid-template-columns: 1fr 1fr;
 }
 </style>

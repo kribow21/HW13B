@@ -1,9 +1,9 @@
 <template>
-    <ul>
-    <li>{{user}}</li>
-    <li>{{post}}</li>
-    <li>{{datePosted}}</li>
-    </ul>
+    <div>
+    <h3>{{user}}</h3>
+    <h4>{{post}}</h4>
+    <p>{{datePosted}}</p>
+    </div>
 </template>
 
 <script>
@@ -18,6 +18,11 @@
 </script>
 
 <style scoped>
-
+div{
+    border: blueviolet solid 2px;
+    margin-bottom: 3%;
+    width: 80%;
+    padding: 2px;
+}
 
 </style>
